@@ -7,7 +7,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-    	text: 'apsodifj'
+    	text: ''
+
     }
   }
 
@@ -39,7 +40,7 @@ export default class App extends React.Component {
       	</View>
       	<View style={styles.view3}>
       		<TxtMsgParamView
-      			onChangeText ={(text, id) => this.setState({text: id})}
+      			onChangeText ={(text) => this.setState({text: text})}
       		>
       			
       		</TxtMsgParamView>

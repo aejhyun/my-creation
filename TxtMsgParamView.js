@@ -1,9 +1,11 @@
 import React from 'react';
+import * as enums from './Enums.js'
 
 import { StyleSheet, Text, View } from 'react-native';
 import {CustomTextInput} from './CustomTextInput.js'
 import VisibilityManager from './VisibilityManager.js'
-import * as enums from './Enums.js'
+import TxtMsgCreator from './TxtMsgCreator.js'
+
 
 export class TxtMsgParamView extends React.Component {
   
@@ -11,10 +13,17 @@ export class TxtMsgParamView extends React.Component {
   constructor(props) {
     super(props);
     this.visibilityManager = new VisibilityManager()
+    this.txtMsgCreator = new TxtMsgCreator()
   }
 
-  onChangeText(text, id) {
-    this.props.onChangeText(text, id)
+  onChangeText(text, txtMsgType) {
+    this.txtMsgCreator.setTxtMsgParamValue(text, txtMsgType)
+    var txtMsg = this.txtMsgCreator.createTxtMsg(enums.TextMessageType.CONFIRM_PHONE_NUMBER)
+
+
+
+
+    this.props.onChangeText(txtMsg)
   }
 
 
