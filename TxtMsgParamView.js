@@ -7,23 +7,27 @@ import VisibilityManager from './VisibilityManager.js'
 import TxtMsgCreator from './TxtMsgCreator.js'
 
 
+
 export class TxtMsgParamView extends React.Component {
   
 
   constructor(props) {
     super(props);
+    this.state = {
+      txtMsgType: this.props.txtMsgType
+    }
     this.visibilityManager = new VisibilityManager()
     this.txtMsgCreator = new TxtMsgCreator()
   }
 
-  onChangeText(text, txtMsgType) {
-    this.txtMsgCreator.setTxtMsgParamValue(text, txtMsgType)
-    var txtMsg = this.txtMsgCreator.createTxtMsg(enums.TextMessageType.CONFIRM_PHONE_NUMBER)
+  onChangeText(text, txtMsgParamType) {
+    this.txtMsgCreator.setTxtMsgParamValue(text, txtMsgParamType)
+    var txtMsg = this.txtMsgCreator.createTxtMsg(this.state.txtMsgType)
 
 
 
 
-    this.props.onChangeText(txtMsg)
+    this.props.onChangeText(this.state.txtMsgType)
   }
 
 
@@ -34,7 +38,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.candidateName}
-              id = {enums.TextMessageInfoType.CANDIDATE_NAME}
+              id = {enums.TxtMsgParamType.CANDIDATE_NAME}
               placeholder = "Candidate's Name"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
             />
@@ -42,7 +46,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.myName}
-              id = {enums.TextMessageInfoType.MY_NAME}
+              id = {enums.TxtMsgParamType.MY_NAME}
               placeholder = "My Name"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
             />
@@ -50,7 +54,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.location}
-              id = {enums.TextMessageInfoType.LOCATION}
+              id = {enums.TxtMsgParamType.LOCATION}
               placeholder = "Location"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
             />
@@ -58,7 +62,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.time}
-              id = {enums.TextMessageInfoType.TIME}
+              id = {enums.TxtMsgParamType.TIME}
               placeholder = "Time"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
             />
@@ -66,7 +70,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.day}
-              id = {enums.TextMessageInfoType.DAY}
+              id = {enums.TxtMsgParamType.DAY}
               placeholder = "Day"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
             />
@@ -74,7 +78,7 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.address}
-              id = {enums.TextMessageInfoType.ADDRESS}
+              id = {enums.TxtMsgParamType.ADDRESS}
               // value = {this.addressBookManager.getSelectedAddress()}
               placeholder = "Address"
               onChangeText ={(text, id) => this.onChangeText(text, id)}
@@ -83,9 +87,9 @@ export class TxtMsgParamView extends React.Component {
             <CustomTextInput
               style = {styles.textInputContainer} 
               visible = {this.visibilityManager.speakerName}
-              id = {enums.TextMessageInfoType.SPEAKER_NAME}
+              id = {enums.TxtMsgParamType.SPEAKER_NAME}
               placeholder = "Speaker's Name"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
+              onChangeText = {(text, id) => this.onChangeText(text, id)}
             />
 
 

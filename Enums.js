@@ -1,4 +1,4 @@
-export const TextMessageType = {
+export const TxtMsgType = {
  
   CONFIRM_PHONE_NUMBER: "confirmPhoneNumber",
   CHECK_AVAILABILITY: "checkAvailability",
@@ -16,7 +16,7 @@ export const TextMessageType = {
   
 }
 
-export const TextMessageInfoType = {
+export const TxtMsgParamType = {
   CANDIDATE_NAME: "Candidate's Name",
   MY_NAME: "My Name",
   LOCATION: "Location",
@@ -24,4 +24,5 @@ export const TextMessageInfoType = {
   DAY: "Day",
   ADDRESS: "Address",
   SPEAKER_NAME: "Speaker's Name",
+  PERSONAL_MESSAGE: "Personal Message"
 }

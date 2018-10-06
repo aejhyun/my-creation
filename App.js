@@ -1,20 +1,22 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import {TxtMsgParamView} from './TxtMsgParamView.js'
+import {TxtMsgTypePicker} from './TxtMsgTypePicker.js'
 
 export default class App extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-    	text: ''
+    	text: '',
+    	pickedTxtMsgType: ''
 
     }
+
+    this.test = ''
   }
 
-	txtMsgParamViewOnChangeText(text, id) {
-		this.setState({text: text})
-	}
+
 
 
 
@@ -23,38 +25,32 @@ export default class App extends React.Component {
       <View style={styles.parentView}>
         
         <View style={styles.view1}>
-        
-
-      
-
-
       	</View>
+      	
+
       	<View style={styles.view2}>
-        
-
-      	<Text>
-      		{this.state.text}
-      	</Text>
-
-
+ 	      	<Text>
+	      		{this.state.text}
+	      		{this.state.pickedTxtMsgType}
+	      	</Text>
       	</View>
+      	
+
       	<View style={styles.view3}>
       		<TxtMsgParamView
-      			onChangeText ={(text) => this.setState({text: text})}
-      		>
-      			
+      			onChangeText = {(text) => this.setState({text: text})}
+      			txtMsgType = {this.state.pickedTxtMsgType}
+      		>	
       		</TxtMsgParamView>
-      
-
-
       	</View>
 
+      	
+
       	<View style={styles.view4}>
-        
-
-      
-
-
+        	<TxtMsgTypePicker
+        		onValueChange = {(pickedTxtMsgType) => this.setState({pickedTxtMsgType: pickedTxtMsgType})}
+        	>
+        	</TxtMsgTypePicker>
       	</View>
 
 
