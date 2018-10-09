@@ -36,7 +36,7 @@ export class TxtMsgParamButtons extends React.Component {
               title = {enums.TxtMsgParamType.CANDIDATE_NAME + ":"}
               textAlign = {"right"}
               onPress = {() => { 
-                // this.setModalVisible(true)
+                
               }} 
             />
 
@@ -86,7 +86,7 @@ export class TxtMsgParamButtons extends React.Component {
               title = {enums.TxtMsgParamType.ADDRESS + ":"}
               textAlign = {"right"}
               onPress = {() => { 
- 
+                this.props.addressButtonPressed()
               }} 
             />
 

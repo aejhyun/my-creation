@@ -1,18 +1,24 @@
 import React from 'react';
 import * as enums from './Enums.js'
 
-import { StyleSheet, Text, View } from 'react-native';
+import { Modal, StyleSheet, Text, TextInput, TouchableHighlight, View } from 'react-native';
 import {TxtMsgParamTextInputs} from './TxtMsgParamView.js'
 import {TxtMsgParamButtons} from './TxtMsgParamButtons.js'
 import {TxtMsgTypePicker} from './TxtMsgTypePicker.js'
+import {TxtMsgTransferButtons} from './TxtMsgTransferButtons.js'
+import {CustomModalList} from './CustomModalList.js'
 import TxtMsgMaker from './TxtMsgMaker.js'
+
+import {CustomButton} from './CustomButton.js'
+import {CustomTextInput} from './CustomTextInput.js'
 
 export default class App extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-    	txtMsg: '',
+    	txtMsg: new TxtMsgMaker().makeTxtMsgWith(enums.TxtMsgType.CONFIRM_PHONE_NUMBER),
+    	addressBookVisible: false,
     }
     this.txtMsgMaker = new TxtMsgMaker()
     this.pickedTxtMsgType = enums.TxtMsgType.CONFIRM_PHONE_NUMBER
@@ -34,36 +40,47 @@ export default class App extends React.Component {
   	this.setState({txtMsg: this.txtMsgMaker.makeTxtMsgWith(this.pickedTxtMsgType)})
   }
 
+  setAddressBookVisibilityTo(visibility) {
+    this.setState({addressBookVisible: visibility});
+  }
+
   render() {
     return (
       <View style={styles.parentView}>
+
+
+				<CustomModalList
+					visible={this.state.addressBookVisible}
+					setAddressBookVisibilityTo = {(visibility) => this.setAddressBookVisibilityTo(visibility)}
+				/>
+
+
+
+
         
         <View style={styles.view1}>
       	</View>
       	
 
       	<View style={styles.view2}>
- 	      	<Text>
-	      		{this.state.txtMsg}
-	      		{this.state.pickedTxtMsgType}
-	      	</Text>
+          <CustomTextInput
+            style={{ flex: 2}}
+            multiline = {true}
+            placeholder="The text message..."
+            value = {this.state.txtMsg}
+          />
+          <TxtMsgTransferButtons/>
       	</View>
-      	
 
       	<View style={styles.view3}>
-      			<TxtMsgParamButtons>
-      				
-      			</TxtMsgParamButtons>
-
-      			<TxtMsgParamTextInputs
+    			<TxtMsgParamButtons
+    				addressButtonPressed = {() => this.setAddressBookVisibilityTo(true)}
+    			/>
+    			<TxtMsgParamTextInputs
       			onChangeText = {(text, paramType) => this.get(text, paramType)}
       			txtMsgType = {this.pickedTxtMsgType}
-      			>	
-      			</TxtMsgParamTextInputs>
-	
+    			/>	
       	</View>
-
-      	
 
       	<View style={styles.view4}>
         	<TxtMsgTypePicker
@@ -72,15 +89,7 @@ export default class App extends React.Component {
         	</TxtMsgTypePicker>
       	</View>
 
-
-      
-
-
       </View>
-
-
-
-
     );
   }
 }
