@@ -2,11 +2,10 @@ import React from 'react';
 import * as enums from './Enums.js'
 
 import { StyleSheet, Text, View } from 'react-native';
-import {TxtMsgParamView} from './TxtMsgParamView.js'
+import {TxtMsgParamTextInputs} from './TxtMsgParamView.js'
+import {TxtMsgParamButtons} from './TxtMsgParamButtons.js'
 import {TxtMsgTypePicker} from './TxtMsgTypePicker.js'
 import TxtMsgMaker from './TxtMsgMaker.js'
-
-
 
 export default class App extends React.Component {
   
@@ -52,11 +51,16 @@ export default class App extends React.Component {
       	
 
       	<View style={styles.view3}>
-      		<TxtMsgParamView
+      			<TxtMsgParamButtons>
+      				
+      			</TxtMsgParamButtons>
+
+      			<TxtMsgParamTextInputs
       			onChangeText = {(text, paramType) => this.get(text, paramType)}
       			txtMsgType = {this.pickedTxtMsgType}
-      		>	
-      		</TxtMsgParamView>
+      			>	
+      			</TxtMsgParamTextInputs>
+	
       	</View>
 
       	

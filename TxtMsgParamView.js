@@ -7,26 +7,14 @@ import VisibilityManager from './VisibilityManager.js'
 import TxtMsgMaker from './TxtMsgMaker.js'
 
 
-
-
-export class TxtMsgParamView extends React.Component {
+export class TxtMsgParamTextInputs extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-
-
     }
 
     this.visibilityManager = new VisibilityManager()
-
-    
-    
-  }
-
-  asdf() {
-
-    return this.props.yo
   }
 
 
@@ -39,69 +27,68 @@ export class TxtMsgParamView extends React.Component {
     this.props.onChangeText(text, paramType)
   }
 
-
   render() {
     return (
       <View style={styles.container}
         callVisibilityManager = {this.setVisibility()}
       >
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.candidateName}
-              id = {enums.TxtMsgParamType.CANDIDATE_NAME}
-              placeholder = "Candidate's Name"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer}
+          visible = {this.visibilityManager.candidateName}
+          id = {enums.TxtMsgParamType.CANDIDATE_NAME}
+          placeholder = "Candidate's Name"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.myName}
-              id = {enums.TxtMsgParamType.MY_NAME}
-              placeholder = "My Name"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.myName}
+          id = {enums.TxtMsgParamType.MY_NAME}
+          placeholder = "My Name"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.location}
-              id = {enums.TxtMsgParamType.LOCATION}
-              placeholder = "Location"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.location}
+          id = {enums.TxtMsgParamType.LOCATION}
+          placeholder = "Location"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.time}
-              id = {enums.TxtMsgParamType.TIME}
-              placeholder = "Time"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.time}
+          id = {enums.TxtMsgParamType.TIME}
+          placeholder = "Time"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.day}
-              id = {enums.TxtMsgParamType.DAY}
-              placeholder = "Day"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.day}
+          id = {enums.TxtMsgParamType.DAY}
+          placeholder = "Day"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.address}
-              id = {enums.TxtMsgParamType.ADDRESS}
-              // value = {this.addressBookManager.getSelectedAddress()}
-              placeholder = "Address"
-              onChangeText ={(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.address}
+          id = {enums.TxtMsgParamType.ADDRESS}
+          // value = {this.addressBookManager.getSelectedAddress()}
+          placeholder = "Address"
+          onChangeText ={(text, id) => this.onChangeText(text, id)}
+        />
 
-            <CustomTextInput
-              style = {styles.textInputContainer} 
-              visible = {this.visibilityManager.speakerName}
-              id = {enums.TxtMsgParamType.SPEAKER_NAME}
-              placeholder = "Speaker's Name"
-              onChangeText = {(text, id) => this.onChangeText(text, id)}
-            />
+        <CustomTextInput
+          style = {styles.textInputContainer} 
+          visible = {this.visibilityManager.speakerName}
+          id = {enums.TxtMsgParamType.SPEAKER_NAME}
+          placeholder = "Speaker's Name"
+          onChangeText = {(text, id) => this.onChangeText(text, id)}
+        />
 
 
 
@@ -114,9 +101,10 @@ export class TxtMsgParamView extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'steelblue',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: 'stretch',
+    flexDirection: "column",
+    backgroundColor: 'lightgreen',
+    justifyContent: 'center'
   },
 
   textInputContainer: {
