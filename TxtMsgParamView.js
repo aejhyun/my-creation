@@ -4,36 +4,47 @@ import * as enums from './Enums.js'
 import { StyleSheet, Text, View } from 'react-native';
 import {CustomTextInput} from './CustomTextInput.js'
 import VisibilityManager from './VisibilityManager.js'
-import TxtMsgCreator from './TxtMsgCreator.js'
+import TxtMsgMaker from './TxtMsgMaker.js'
+
 
 
 
 export class TxtMsgParamView extends React.Component {
   
-
   constructor(props) {
     super(props);
     this.state = {
-      txtMsgType: this.props.txtMsgType
+
+
     }
+
     this.visibilityManager = new VisibilityManager()
-    this.txtMsgCreator = new TxtMsgCreator()
+
+    
+    
   }
 
-  onChangeText(text, txtMsgParamType) {
-    this.txtMsgCreator.setTxtMsgParamValue(text, txtMsgParamType)
-    var txtMsg = this.txtMsgCreator.createTxtMsg(this.state.txtMsgType)
+  asdf() {
+
+    return this.props.yo
+  }
 
 
+  setVisibility() {
+    this.visibilityManager.setVisibilityUsing(this.props.txtMsgType)
+  }
 
 
-    this.props.onChangeText(this.state.txtMsgType)
+  onChangeText(text, paramType) {
+    this.props.onChangeText(text, paramType)
   }
 
 
   render() {
     return (
-      <View style={styles.container}>
+      <View style={styles.container}
+        callVisibilityManager = {this.setVisibility()}
+      >
 
             <CustomTextInput
               style = {styles.textInputContainer} 

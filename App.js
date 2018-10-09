@@ -1,24 +1,39 @@
 import React from 'react';
+import * as enums from './Enums.js'
+
 import { StyleSheet, Text, View } from 'react-native';
 import {TxtMsgParamView} from './TxtMsgParamView.js'
 import {TxtMsgTypePicker} from './TxtMsgTypePicker.js'
+import TxtMsgMaker from './TxtMsgMaker.js'
+
+
 
 export default class App extends React.Component {
   
   constructor(props) {
     super(props);
     this.state = {
-    	text: '',
-    	pickedTxtMsgType: ''
-
+    	txtMsg: '',
     }
+    this.txtMsgMaker = new TxtMsgMaker()
+    this.pickedTxtMsgType = enums.TxtMsgType.CONFIRM_PHONE_NUMBER
 
-    this.test = ''
   }
 
+  picked(txtMsgType) {
+  	this.pickedTxtMsgType = txtMsgType
+  	this.makeTxtMsg()
 
+  }
 
+  get(text, paramType) {
+ 		this.txtMsgMaker.setParamUsing(text, paramType)
+  	this.makeTxtMsg()
+  }
 
+  makeTxtMsg() {
+  	this.setState({txtMsg: this.txtMsgMaker.makeTxtMsgWith(this.pickedTxtMsgType)})
+  }
 
   render() {
     return (
@@ -30,7 +45,7 @@ export default class App extends React.Component {
 
       	<View style={styles.view2}>
  	      	<Text>
-	      		{this.state.text}
+	      		{this.state.txtMsg}
 	      		{this.state.pickedTxtMsgType}
 	      	</Text>
       	</View>
@@ -38,8 +53,8 @@ export default class App extends React.Component {
 
       	<View style={styles.view3}>
       		<TxtMsgParamView
-      			onChangeText = {(text) => this.setState({text: text})}
-      			txtMsgType = {this.state.pickedTxtMsgType}
+      			onChangeText = {(text, paramType) => this.get(text, paramType)}
+      			txtMsgType = {this.pickedTxtMsgType}
       		>	
       		</TxtMsgParamView>
       	</View>
@@ -48,7 +63,7 @@ export default class App extends React.Component {
 
       	<View style={styles.view4}>
         	<TxtMsgTypePicker
-        		onValueChange = {(pickedTxtMsgType) => this.setState({pickedTxtMsgType: pickedTxtMsgType})}
+        		onValueChange = {(txtMsgType) => this.picked(txtMsgType)}
         	>
         	</TxtMsgTypePicker>
       	</View>

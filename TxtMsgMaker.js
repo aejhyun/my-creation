@@ -1,7 +1,7 @@
 import * as enums from './Enums.js'
 
-export default class TxtMsgCreator {
-  constructor() {
+export default class TxtMsgMaker {
+  constructor(paramValues) {
     this.candidateName = ''
     this.timeOfDay = ''
     this.myName = ''
@@ -23,7 +23,7 @@ export default class TxtMsgCreator {
   }
 
 
-  setTxtMsgParamValue(text, txtMsgParamType) {
+  setParamUsing(text, txtMsgParamType) {
     switch(txtMsgParamType) {
       case enums.TxtMsgParamType.CANDIDATE_NAME:
         this.candidateName = text
@@ -68,7 +68,11 @@ export default class TxtMsgCreator {
     return timeOfDay
   }
 
-  createTxtMsg(txtMsgType) {
+  asdf() {
+    
+  }
+
+  makeTxtMsgWith(txtMsgType) {
     switch (txtMsgType) {
       case enums.TxtMsgType.CONFIRM_PHONE_NUMBER:
         return "Good " + this.timeOfDay + " " + this.candidateName + ", this is " + this.myName + ". We met at " + this.location + " today. Just double checking if I have the right number :)"
